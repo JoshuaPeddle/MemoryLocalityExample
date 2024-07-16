@@ -2,7 +2,7 @@
 
 A small example program to demonstrate memory locality.
 
-![image](https://github.com/user-attachments/assets/49dcefe7-a827-4160-8fd6-f84bc87afea0)
+![image](https://github.com/user-attachments/assets/13cdad7b-3c89-4ec6-9235-0b5aab75bb42)*Times in ms*
 
 ![image](https://github.com/user-attachments/assets/93a41e69-3597-4b12-aefa-385ecbe7ea7e)
 
