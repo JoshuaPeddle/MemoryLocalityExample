@@ -1,6 +1,6 @@
 # MemoryLocality
 
-A small example program to demonstrate memory locality. Emphasises inefficiency of datatable.
+A small example program to demonstrate memory locality.
 
 ![image](https://github.com/user-attachments/assets/49dcefe7-a827-4160-8fd6-f84bc87afea0)
 
