@@ -1,9 +1,12 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
+using System.Linq;
 
 class Program
 {
-    readonly static int[] ValuesToTest = { 10000, 1000000, 10000000 };
+    readonly static int[] ValuesToTest = { 10000, 100000, 1000000, 10000000, 100000000, 1000000000 };
     readonly static int[] ExtraColumnsInDt = { 0, 10, 100 };
 
     static void Main()
@@ -12,16 +15,22 @@ class Program
 
         foreach (int n in ValuesToTest)
         {
+            Console.WriteLine($"{n.ToString("#,##0")} values");
+
+            // Run benchmarks for array and list once per value count
+            RunArrayAndListBenchmark(n);
+
             foreach (var m in ExtraColumnsInDt)
             {
                 Console.WriteLine($"{n.ToString("#,##0")} values and {m.ToString("#,##0")} extra columns in the datatable");
-                RunBenchmark(n, m);
-                Console.WriteLine("\n");
+                RunDataTableBenchmark(n, m);
+                
             }
+            Console.WriteLine("");
         }
     }
 
-    private static void RunBenchmark(int num_values, int extra_columns_dt)
+    private static void RunArrayAndListBenchmark(int num_values)
     {
         int[] arr = CreateTestingArray(num_values);
         var arrTime = TimeAction(() =>
@@ -33,7 +42,6 @@ class Program
         });
         Console.WriteLine($"Array: {arrTime.ToString("#,##0")}ms");
 
-
         List<int> list = CreateTestingList(num_values);
         var listTime = TimeAction(() =>
         {
@@ -43,8 +51,10 @@ class Program
             }
         });
         Console.WriteLine($"List: {listTime.ToString("#,##0")}ms");
+    }
 
-
+    private static void RunDataTableBenchmark(int num_values, int extra_columns_dt)
+    {
         DataTable dt = CreateTestingDataTable(num_values, extra_columns_dt);
         var dtTime = TimeAction(() =>
         {
@@ -114,5 +124,3 @@ class Program
         }
     }
 }
-
-
