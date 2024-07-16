@@ -54,5 +54,9 @@ DataTable: 5,021ms
 10,000,000 values and 100 extra columns in the datatable
 Array: 45ms
 List: 82ms
-
+DataTable: 18,762ms
 ```
+
+<img width="816" alt="image" src="https://github.com/user-attachments/assets/a2b3cfab-6dcb-4825-982b-820878a438ac">
+
+
